@@ -13,11 +13,11 @@
 
 <h1>Accueil</h1>
 	<form action="./AjoutRepas" method="GET">
-		<button name="tache">Ajouter un nouveau repas</button>
+		<button>Ajouter un nouveau repas</button>
 	</form>
 
 	<form action="./VisualiserRepas" method="GET">
-		<button name="tache">Visualiser les repas</button>
+		<button>Visualiser les repas</button>
 	</form>
 	
 </body>

@@ -8,10 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.List;
-
 import model.bo.Ingredient;
-import model.bo.Livre;
 import model.bo.Repas;
 
 /**
@@ -54,27 +51,45 @@ public class RepasDAOJdbcImpl implements RepasDAO {
 		}
 	}
 
-//	public List<Livre> selectAll() {
-//		List<Livre> stock = new ArrayList<Livre>();
-//		Connection cnx = Connexion.getCnx();
-//		String sql = "SELECT * from livre";
-//		try {
-//			Statement state = cnx.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-//			ResultSet rs = state.executeQuery(sql);
-//			while (rs.next()) {
-//				Livre l = new Livre();
-//				l.setId(rs.getInt("id"));
-//				l.setTitre(rs.getString("titre"));
-//				l.setIsbn(rs.getString("isbn"));
-//				l.setAuteur(rs.getString("auteur"));
-//				stock.add(l);
-//				}
-//			}
-//		catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return stock;
-//	}
+	public ArrayList<Repas> show() throws SQLException {
+		ArrayList<Repas> listeRepas = new ArrayList<Repas>();
+		Connection cnx = ConnectionProvider.getConnection();
+		String sql = "SELECT * from Repas;";
+		try {
+			Statement state = cnx.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = state.executeQuery(sql);
+			while (rs.next()) {
+				Repas r = new Repas();
+				r.setIdentifiant(rs.getInt("id"));
+				r.setDate(rs.getDate("date").toLocalDate());
+				r.setHeure(rs.getTime("heure").toLocalTime());
+				listeRepas.add(r);
+				}
+			}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listeRepas;
+	}
+	
+	public ArrayList<Ingredient> detail(int id) throws SQLException {
+		ArrayList<Ingredient> listeIngredient = new ArrayList<Ingredient>();
+		Connection cnx = ConnectionProvider.getConnection();
+		String sqlPrepared = "SELECT * FROM Ingredient WHERE id_repas = ?";
+		try {
+			PreparedStatement pStmt = cnx.prepareStatement(sqlPrepared);
+			pStmt.setInt(1, id);
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()) {
+				Ingredient ing = new Ingredient();
+				ing.setLibelle(rs.getString("nom"));
+				listeIngredient.add(ing);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listeIngredient;
+	}
 	
 	}
 

@@ -24,7 +24,9 @@ public class Repas {
 		this.date = date;
 	}
 
-
+	public Repas() {
+		super();
+	}
 
 	public int getIdentifiant() {
 		return Identifiant;

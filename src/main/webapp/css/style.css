@@ -16,3 +16,11 @@ tfoot {
     background-color: #c0c0c0;
     color: #000000;
 }
+
+.link-button { 
+     background: none;
+     border: none;
+     color: #1a0dab;
+     text-decoration: underline;
+     cursor: pointer; 
+}
