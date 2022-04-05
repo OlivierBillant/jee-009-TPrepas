@@ -45,15 +45,20 @@ public class VisualiserRepas extends HttpServlet {
 			for (Repas repas : listeRepas) {
 				System.out.println(repas);
 			}
+			System.out.println("**********");
+
 			request.setAttribute("listeRepas", listeRepas);
 			
-//			Integer id = (Integer) request.getAttribute("id");
-			System.out.println("Test id");
-			Integer id = 2;
-			System.out.println(id);
+			String id_string = request.getParameter("id");
+					
+			System.out.println();
+//			Integer id = 2;
+			System.out.println(id_string);
 			System.out.println("Avant boucle");
+			System.out.println();
 
-			if(id != null) {
+			if(id_string != null) {
+				Integer id = Integer.parseInt(id_string);
 				System.out.println(id);
 				ArrayList<Ingredient> listeIngredient = repasManager.detail(id);
 				request.setAttribute("listeIngredient", listeIngredient);

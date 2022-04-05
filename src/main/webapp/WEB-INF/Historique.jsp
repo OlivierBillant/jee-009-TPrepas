@@ -27,7 +27,7 @@
 					<tr>
 						<td>${repas.date}</td>
 						<td>${repas.heure}</td>
-						<td> <a href="?id=${repas.identifiant}">Détail</a> </td>
+						<td> <a href="./VisualiserRepas?id=${repas.identifiant}">Détail</a> </td>
 					</tr>
 				</c:forEach>
 			</tbody>
