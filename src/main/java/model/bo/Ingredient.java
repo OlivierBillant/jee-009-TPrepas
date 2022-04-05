@@ -1,6 +1,7 @@
 package model.bo;
 
 public class Ingredient {
+	private int id;
 	private String Libelle;
 
 	public Ingredient(String libelle) {
@@ -27,6 +28,18 @@ public class Ingredient {
 	@Override
 	public String toString() {
 		return  Libelle;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 

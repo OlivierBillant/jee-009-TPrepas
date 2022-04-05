@@ -5,3 +5,14 @@
 .message-erreur{
 	color: red;
 }
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #c0c0c0;
+    color: #000000;
+}
