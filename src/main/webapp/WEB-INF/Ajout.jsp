@@ -4,20 +4,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./css/style.css" />
 <title>Ajout repas</title>
 </head>
 <body>
 	<h1>AJOUT</h1>
 
-	<form action="./Traitement" method="POST">
-		<label>Date</label> <input type="LocalDate" name="date" /> <br>
-		<label>Heure</label><input type="LocalTime" name="heure" />  <br>
-		<label>Repas</label> <input type="text" name="repas" /> <br>
+	<p class="message-confirmation">${messageConfirmation}</p>
 
-		<button name="tache">Valider</button>
-		<button name="tache">Annuler</button>
+	<form action="./AjoutRepas" method="POST">
+		<label>Date</label> <input type="text" name="date" /> <br>
+		<label>Heure</label><input type="text" name="heure" />  <br>
+		<label>Repas</label> <textarea id="ingredients" name="ingredients" row="5" col="30"> Liste des ingrédients</textarea><br>
+
+		<button name="valider">Valider</button>
 	</form>
-
+	<form action="./Retour" method="GET">
+		<button name="annuler">Annuler</button>
+	</form>
 
 </body>
 </html>

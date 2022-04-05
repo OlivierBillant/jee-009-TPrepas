@@ -12,11 +12,11 @@
 <body>
 
 <h1>Accueil</h1>
-	<form action="./AjoutRepas" method="POST">
+	<form action="./AjoutRepas" method="GET">
 		<button name="tache">Ajouter un nouveau repas</button>
 	</form>
 
-<form action="./VisualiserRepas" method="POST">
+	<form action="./VisualiserRepas" method="GET">
 		<button name="tache">Visualiser les repas</button>
 	</form>
 	
