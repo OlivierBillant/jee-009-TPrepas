@@ -19,7 +19,7 @@
 
 		<h1>Accueil</h1>
 		<form action="./AjoutRepas" method="GET">
-			<button class="btn btn-light" type="submit">Ajouter un nouveau repas</button>
+			<button class="btn btn-light my-3" type="submit">Ajouter un nouveau repas</button>
 		</form>
 
 		<form action="./VisualiserRepas" method="GET">

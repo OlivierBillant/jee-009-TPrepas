@@ -11,22 +11,25 @@
 <title>Ajout repas</title>
 </head>
 <body>
-<div class="container text-center">
-	<h1>AJOUT</h1>
-
-	<p class="message-confirmation">${messageConfirmation}</p>
-	<p class="message-erreur">${messageErreur}</p>
-
-	<form action="./AjoutRepas" method="POST">
-		<label>Date</label> <input type="text" name="date" /> <br>
-		<label>Heure</label><input type="text" name="heure" />  <br>
-		<label>Repas</label> <textarea id="ingredients" name="ingredients" row="5" col="30"> Liste des ingrédients</textarea><br>
-
-		<button name="valider"  type="submit" class="btn btn-success" >Valider</button>
-	</form>
-	<form action="./Retour" method="GET">
-		<button name="annuler" type="submit" class="btn btn-warning">Annuler</button>
-	</form>
+	<div class="container text-center">
+		<h1>Ajout</h1>
+	
+		<p class="message-confirmation">${messageConfirmation}</p>
+		<p class="message-erreur">${messageErreur}</p>
 	</div>
+<div class="container w-50">
+	<div class="text-center my-3 mx-5 px-5 ">
+		<form action="./AjoutRepas" method="POST">
+			<label>Date</label> <input type="text" name="date" class="form-control" placeholder="Date YYYY-MM-DD" aria-label="Date" aria-describedby="basic-addon1" /> <br>
+			<label>Heure</label><input type="text" name="heure" class="form-control" placeholder="Heure hh-mm-ss" aria-label="Heure" aria-describedby="basic-addon1" />  <br>
+			<label>Repas</label> <textarea id="ingredients" name="ingredients" row="5" col="30" placeholder="Liste des ingrédients" class="form-control" aria-label="With textarea"> </textarea><br>
+				<div class="w-100">
+						<button name="btn-valider" type="submit"
+							class="btn btn-success my-3 w-25">Valider</button>
+						<a class="btn btn-warning w-25" href="./" role="button">Annuler</a>
+					</div>
+			</form>
+	</div>
+</div>
 </body>
 </html>

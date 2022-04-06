@@ -14,14 +14,14 @@
 </head>
 <body>
 	<div class="container text-center">
-		<h1>HISTORIQUE</h1>
+		<h1>Historique</h1>
 	</div>
 
 
-	<div class="container text-center">
+	<div class="container text-center w-50">
 
 		<table class="table table-bordered" >
-			<thead class="thead-light">
+			<thead class="table-dark">
 				<tr>
 					<th colspan="1">Date</th>
 					<th colspan="1">Heure</th>
@@ -34,15 +34,17 @@
 						<td>${repas.date}</td>
 						<td>${repas.heure}</td>
 						<td> <a href="./VisualiserRepas?id=${repas.identifiant}">Détail</a> </td>
+						
 					</tr>
+					<c:if test="${listeIngredient.size()> 0 && param.id==repas.identifiant}">
+						<tr >
+							<c:forEach var="ingredient" items="${listeIngredient}">
+								<td>${ingredient}</td>
+							</c:forEach>
+						</tr>
+					</c:if>
 				</c:forEach>
-				<c:if test="${listeIngredient.size()> 0}">
-					<tr>
-						<c:forEach var="ingredient" items="${listeIngredient}">
-							<td>${ingredient}</td>
-						</c:forEach>
-					</tr>
-				</c:if>
+				
 			</tbody>
 		</table>
 	</div>
@@ -50,7 +52,7 @@
 		<div class="text-center btn-group" role="group"
 			aria-label="Basic example">
 			<form action="./AjoutRepas" method="GET">
-				<button type="submit" class="btn btn-success">Ajouter un
+				<button type="submit" class="btn btn-success mx-3">Ajouter un
 					nouveau repas</button>
 			</form>
 			<form action="./Retour" method="GET">
@@ -58,14 +60,6 @@
 			</form>
 		</div>
 	</div>
-	<%-- <table>
-			<tbody>
-				<c:forEach var="ingredient" items="${listeIngredient}">
-					<tr>
-						<td>${ingredient.libelle}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table> --%>
+	
 </body>
 </html>
