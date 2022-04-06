@@ -31,7 +31,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="basic-addon1">Date</span>
 					</div>
-					<input type="text" name="date" class="form-control"
+					<input type="date" name="date" class="form-control"
 						placeholder="YYYY-MM-DD" aria-label="Date"
 						aria-describedby="basic-addon1" />
 				</div>
@@ -41,7 +41,7 @@
 					<div class="input-group-append">
 						<span class="input-group-text" id="basic-addon1">Heure</span>
 					</div>
-					<input type="text" name="heure" class="form-control"
+					<input type="time" name="heure" class="form-control"
 						placeholder="hh-mm-ss" aria-label="Heure"
 						aria-describedby="basic-addon1" />
 				</div>
