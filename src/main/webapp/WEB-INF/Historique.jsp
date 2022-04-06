@@ -33,14 +33,15 @@
 					<tr>
 						<td>${repas.date}</td>
 						<td>${repas.heure}</td>
-						<td> <a href="./VisualiserRepas?id=${repas.identifiant}">Détail</a> </td>
-						
+						<td> <a href="./VisualiserRepas?id=${repas.identifiant}">Détail</a> </td>	
 					</tr>
 					<c:if test="${listeIngredient.size()> 0 && param.id==repas.identifiant}">
-						<tr >
-							<c:forEach var="ingredient" items="${listeIngredient}">
-								<td>${ingredient}</td>
-							</c:forEach>
+						<tr>
+							<td colspan="3"><c:forEach var="ingredient" items="${listeIngredient}">
+									<ul>
+										<li>${ingredient}</li>
+									</ul>
+								</c:forEach></td>
 						</tr>
 					</c:if>
 				</c:forEach>

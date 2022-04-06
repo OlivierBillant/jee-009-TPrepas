@@ -52,7 +52,7 @@ public class AjoutRepas extends HttpServlet {
 			
 			for (String string : temp) {
 				Ingredient ingredient_temp = new Ingredient();
-				ingredient_temp.setLibelle(string);
+				ingredient_temp.setLibelle(string.trim());
 				composition.add(ingredient_temp);
 			}
 			
