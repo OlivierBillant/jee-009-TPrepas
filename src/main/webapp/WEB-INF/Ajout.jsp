@@ -59,7 +59,7 @@
 				<div class="w-100">
 					<button name="btn-valider" type="submit"
 						class="btn btn-success my-s3 w-25">Valider</button>
-					<a class="btn btn-warning w-25" href="./" role="button">Annuler</a>
+					<a class="btn btn-warning w-25" href="./" role="button">Retour</a>
 				</div>
 			</form>
 		</div>

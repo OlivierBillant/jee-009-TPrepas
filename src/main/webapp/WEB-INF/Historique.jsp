@@ -57,7 +57,7 @@
 					nouveau repas</button>
 			</form>
 			<form action="./Retour" method="GET">
-				<button name="annuler" type="submit" class="btn btn-warning">Annuler</button>
+				<button name="annuler" type="submit" class="btn btn-warning">Retour</button>
 			</form>
 		</div>
 	</div>

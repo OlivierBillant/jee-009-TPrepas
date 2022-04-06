@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -45,8 +46,10 @@ public class AjoutRepas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
+			try {
 			LocalDate date = LocalDate.parse(request.getParameter("date"));
 			LocalTime heure = LocalTime.parse(request.getParameter("heure"));
+			
 			
 			temp = request.getParameter("ingredients").split(",");
 			
@@ -59,15 +62,16 @@ public class AjoutRepas extends HttpServlet {
 			Repas repas = new Repas(date, heure, composition);
 			System.out.println(repas);
 			
-			try {
 				this.repasManager.add(repas);
 				request.setAttribute("messageConfirmation", "Repas test : " + repas);
 
+			} catch (DateTimeParseException e) {
+				request.setAttribute("messageErreur", "Une erreur s'est glissée dans la saisie");
+			
 			} catch (BusinessException e) {
 				request.setAttribute("messageErreur", e.getMessage());
 				e.printStackTrace();
 			}
-			
 			
 		
 		
