@@ -6,16 +6,16 @@
 	color: red;
 }
 
-table,
+/* table,
 td {
     border: 1px solid #333;
-}
+} */
 
-thead,
-tfoot {
+/* thead, */
+/* tfoot {
     background-color: #c0c0c0;
-    color: #000000;
-}
+    color: rgb(255, 255, 255);
+} */
 
 .link-button { 
      background: none;

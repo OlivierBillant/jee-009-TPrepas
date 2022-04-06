@@ -1,6 +1,7 @@
 package model.bll;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model.bo.Ingredient;
@@ -16,14 +17,11 @@ public class RepasManager {
 
 	
 	public void add(Repas repas) throws BusinessException {
-		// 1 - on valide les données
-//		validation(repas);
+		validation(repas);
 		
-		// 2 - si données OK, on envoie à la couche DAL
 		try {
 			this.repasDAO.add(repas);
 		} catch (SQLException e) {
-			// si jamais j'ai une erreur dans le DAO, je lance mon exception Business qui sera recupérée par mon servlet
 			throw new BusinessException("erreur technique lors de l'insertion en base de donnée");
 		}
 	}
@@ -32,13 +30,17 @@ public class RepasManager {
 	 * Si jamais la validation ne passe pas : je lance une exception qui sera recupérée par mon servlet
 	 * @throws SQLException 
 	 */
-//	private void validation(Repas repas) throws BusinessException {
-//		// on valide que la note est comprise entre 0 et 5
-//		if (repas.getNote() > 5 || avis.getNote() < 0) {
-//			throw new BusinessException("la note doit être comprise entre 0 et 5");
-//		}
-//		// TODO : autres validations
-//	}
+	private void validation(Repas repas) throws BusinessException {
+		if (repas.getDate().isAfter(LocalDate.now())) {
+			throw new BusinessException("la date doit être supérieure à la date du jour");
+		}
+		if(repas.getComposition().size()<2) {
+			throw new BusinessException("le repas doit etre composé d'au moins 2 ingrédients");
+		}
+		
+	}
+	
+	
 	public ArrayList<Repas> show() throws BusinessException, SQLException {
 		// 1 - on valide les données
 //		validation(repas);

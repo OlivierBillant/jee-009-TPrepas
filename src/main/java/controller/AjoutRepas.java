@@ -61,14 +61,15 @@ public class AjoutRepas extends HttpServlet {
 			
 			try {
 				this.repasManager.add(repas);
+				request.setAttribute("messageConfirmation", "Repas test : " + repas);
+
 			} catch (BusinessException e) {
-				// TODO Auto-generated catch block
+				request.setAttribute("messageErreur", e.getMessage());
 				e.printStackTrace();
 			}
 			
 			
 		
-			request.setAttribute("messageConfirmation", "Repas test : " + repas);
 		
 		request.getRequestDispatcher("/WEB-INF/Ajout.jsp").forward(request, response);
 	}

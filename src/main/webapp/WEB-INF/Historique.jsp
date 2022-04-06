@@ -8,13 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css" />
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Historique</title>
 </head>
 <body>
-<h1>HISTORIQUE</h1>
-		<table>
-			<thead>
+	<div class="container text-center">
+		<h1>HISTORIQUE</h1>
+	</div>
+
+
+	<div class="container text-center">
+
+		<table class="table table-bordered" >
+			<thead class="thead-light">
 				<tr>
 					<th colspan="1">Date</th>
 					<th colspan="1">Heure</th>
@@ -23,25 +30,35 @@
 			</thead>
 			<tbody>
 				<c:forEach var="repas" items="${listeRepas}">
-
 					<tr>
 						<td>${repas.date}</td>
 						<td>${repas.heure}</td>
 						<td> <a href="./VisualiserRepas?id=${repas.identifiant}">Détail</a> </td>
 					</tr>
 				</c:forEach>
+				<c:if test="${listeIngredient.size()> 0}">
+					<tr>
+						<c:forEach var="ingredient" items="${listeIngredient}">
+							<td>${ingredient}</td>
+						</c:forEach>
+					</tr>
+				</c:if>
 			</tbody>
 		</table>
-		
-	<form action="./AjoutRepas" method="GET">
-		<button>Ajouter un nouveau repas</button>
-	</form>
-
-	<form action="./Retour" method="GET">
-		<button name="annuler">Annuler</button>
-	</form>
-	
-	<table>
+	</div>
+	<div class="text-center">
+		<div class="text-center btn-group" role="group"
+			aria-label="Basic example">
+			<form action="./AjoutRepas" method="GET">
+				<button type="submit" class="btn btn-success">Ajouter un
+					nouveau repas</button>
+			</form>
+			<form action="./Retour" method="GET">
+				<button name="annuler" type="submit" class="btn btn-warning">Annuler</button>
+			</form>
+		</div>
+	</div>
+	<%-- <table>
 			<tbody>
 				<c:forEach var="ingredient" items="${listeIngredient}">
 					<tr>
@@ -49,6 +66,6 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
+		</table> --%>
 </body>
 </html>
