@@ -17,6 +17,11 @@ public class Repas {
 		this.composition = composition;
 	}
 	
+	public Repas(LocalDate date, LocalTime heure) {
+		super();
+		this.date = date;
+		this.heure = heure;
+	}
 	
 
 	public Repas(LocalDate date) {

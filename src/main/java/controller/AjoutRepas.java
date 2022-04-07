@@ -24,7 +24,6 @@ import model.bo.Repas;
 public class AjoutRepas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String[] temp;
-	private ArrayList<Ingredient> composition = new ArrayList<>();
 	private RepasManager repasManager = new RepasManager();
 
     /**
@@ -46,11 +45,12 @@ public class AjoutRepas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
+		ArrayList<Ingredient> composition = new ArrayList<>();
+
 			try {
 			LocalDate date = LocalDate.parse(request.getParameter("date"));
 			LocalTime heure = LocalTime.parse(request.getParameter("heure"));
-			
-			
+		
 			temp = request.getParameter("ingredients").split(",");
 			
 			for (String string : temp) {
@@ -62,8 +62,8 @@ public class AjoutRepas extends HttpServlet {
 			Repas repas = new Repas(date, heure, composition);
 			System.out.println(repas);
 			
-				this.repasManager.add(repas);
-				request.setAttribute("messageConfirmation", "Repas test : " + repas);
+			this.repasManager.add(repas);
+			request.setAttribute("messageConfirmation", "Repas test : " + repas);
 
 			} catch (DateTimeParseException e) {
 				request.setAttribute("messageErreur", "Une erreur s'est glissée dans la saisie");
