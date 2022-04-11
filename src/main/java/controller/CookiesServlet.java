@@ -30,6 +30,7 @@ public class CookiesServlet extends HttpServlet {
 		String cgu = null;
 		Cookie[] cookies = request.getCookies();
 		System.out.println("----- Liste des cookies ------");
+		System.out.println("Ici on aimerait modifier la valeur d'un cookie");
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				System.out.println("nom=" + cookie.getName() + ", valeur=" + cookie.getValue());

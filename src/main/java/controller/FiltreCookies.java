@@ -10,42 +10,54 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet Filter implementation class FiltreCookies
  */
-@WebFilter("/FiltreCookies")
+@WebFilter("*")
 public class FiltreCookies extends HttpFilter implements Filter {
-       
-    /**
-     * @see HttpFilter#HttpFilter()
-     */
-    public FiltreCookies() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see Filter#destroy()
+	 * 
 	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
-		
-		Cookie[] cookies = request.getCookies();
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+		System.out.println("url qui passe le filtre : " + httpRequest.getServletPath());
+
+//		httpRequest.getRequestDispatcher("/WEB-INF/cgu.jsp").forward(httpRequest, httpResponse);
+
+		Cookie[] cookies = httpRequest.getCookies();
 		System.out.println("----- Liste des cookies ------");
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				System.out.println("nom=" + cookie.getName() + ", valeur=" + cookie.getValue());
+		for (Cookie cookie : cookies) {
+			System.out.println(cookie.getValue());
+		}
+
+		System.out.println();
+		Boolean laisserPasser = false;
+
+		if (httpRequest.getServletPath().contains("/CookiesServlet")) {
+			laisserPasser = true;
+		}
+		for (Cookie cookie : cookies) {
+			if (cookie.getValue().equals("valeur_ok")) {
+				laisserPasser = true;
 			}
 		}
-		chain.doFilter(request, response);
+		if (laisserPasser) {
+//			System.out.println(laisserPasser);
+			chain.doFilter(request, response);
+
+		} else {
+			httpRequest.getRequestDispatcher("/WEB-INF/cgu.jsp").forward(httpRequest, httpResponse);
+			System.out.println(laisserPasser);
+		}
 	}
 
 	/**

@@ -23,11 +23,11 @@
 		<div class="card-body">
 			<h1>CGU ?</h1>
 			<form action="./CookiesServlet" method="POST">
-				<button class="btn btn-success my-3 w-100" type="submit">Mmmok!</button>
+				<button class="btn btn-success my-3 w-100" type="submit">Oui</button>
 			</form>
 
 			<form action="./" method="GET">
-				<button class="btn btn-danger w-100" type="submit">Meh...</button>
+				<button class="btn btn-danger w-100" type="submit">Non</button>
 			</form>
 		</div>
 	</div>
